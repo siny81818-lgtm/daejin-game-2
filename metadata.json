@@ -1,0 +1,6 @@
+{
+  "name": "3D Low-Poly Whack-a-Mole",
+  "description": "A vibrant 3D low-poly Whack-a-Mole game featuring charming mole characters, physics hammer strikes, dynamic combos, and responsive WebGL graphics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
