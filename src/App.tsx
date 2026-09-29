@@ -332,6 +332,8 @@ export default function App() {
   };
 
   const handleRestart = () => {
+    sound.playHit('gold', 0);
+    addFloatingText('새 게임 시작!', '#10b981', window.innerWidth / 2, window.innerHeight / 2);
     startGame();
   };
 
@@ -339,14 +341,6 @@ export default function App() {
     setGameState('menu');
     if (sceneRef.current) {
       sceneRef.current.resetAllMoles();
-    }
-  };
-
-  const handleRotateHammer = () => {
-    if (sceneRef.current) {
-      const angle = sceneRef.current.rotateHammerHead();
-      sound.playHit('miner', 0);
-      addFloatingText(`망치 방향 ${angle}° ↺`, '#f59e0b', window.innerWidth / 2, window.innerHeight / 2);
     }
   };
 
@@ -378,7 +372,7 @@ export default function App() {
           onTogglePause={handleTogglePause}
           onToggleSound={handleToggleSound}
           onToggleHaptics={handleToggleHaptics}
-          onRotateHammer={handleRotateHammer}
+          onResetGame={handleRestart}
         />
       )}
 

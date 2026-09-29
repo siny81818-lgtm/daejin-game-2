@@ -14,7 +14,7 @@ interface HUDProps {
   onTogglePause: () => void;
   onToggleSound: () => void;
   onToggleHaptics: () => void;
-  onRotateHammer: () => void;
+  onResetGame: () => void;
 }
 
 export const HUD: React.FC<HUDProps> = ({
@@ -29,7 +29,7 @@ export const HUD: React.FC<HUDProps> = ({
   onTogglePause,
   onToggleSound,
   onToggleHaptics,
-  onRotateHammer,
+  onResetGame,
 }) => {
   return (
     <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-20">
@@ -42,19 +42,19 @@ export const HUD: React.FC<HUDProps> = ({
             onClick={onTogglePause}
             className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-md border border-white/20 flex items-center justify-center text-slate-800 dark:text-white active:scale-95 transition-transform"
             aria-label={isPaused ? 'Resume' : 'Pause'}
-            title={isPaused ? 'Resume' : 'Pause'}
+            title={isPaused ? '계속하기 (Resume)' : '일시정지 (Pause)'}
           >
             {isPaused ? <Play className="w-5 h-5 fill-current" /> : <Pause className="w-5 h-5 fill-current" />}
           </button>
 
-          {/* Hammer Direction Rotate Button */}
+          {/* Reset / Restart Game Button */}
           <button
-            onClick={onRotateHammer}
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-md border border-white/20 flex items-center justify-center text-slate-800 dark:text-white active:scale-95 transition-transform"
-            aria-label="망치 머리 방향 회전"
-            title="망치 머리 방향 회전 (Rotate Hammer Head)"
+            onClick={onResetGame}
+            className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-md border border-white/20 flex items-center justify-center text-slate-800 dark:text-white active:scale-95 transition-transform hover:bg-white/90 dark:hover:bg-slate-900/90"
+            aria-label="게임 재시작"
+            title="게임 재시작 (Restart Game)"
           >
-            <RotateCw className="w-5 h-5 text-amber-500" />
+            <RotateCw className="w-5 h-5 text-amber-500 hover:rotate-180 transition-transform duration-300" />
           </button>
 
           {/* Sound Toggle */}
