@@ -853,7 +853,7 @@ export class MoleScene {
   }
 
   /**
-   * Tracks cursor for subtle parallax while keeping hammer in upper-left
+   * Tracks cursor for subtle parallax while keeping hammer in upper-left perch
    */
   public handlePointerMove(clientX: number, clientY: number) {
     if (this.isSwinging) return;
@@ -884,7 +884,6 @@ export class MoleScene {
     };
 
     this.boundPointerMove = (e: PointerEvent) => {
-      // On touch drag or mouse move
       if (e.pointerType === 'mouse') {
         this.handlePointerMove(e.clientX, e.clientY);
       }
@@ -1057,7 +1056,7 @@ export class MoleScene {
         );
 
       } else if (this.swingProgress < 1.0) {
-        // Phase 2: Impact Rebound & Smooth Ease-Out Return (0.36 to 1.0)
+        // Phase 2: Impact Rebound & Smooth Ease-Out Return to upper-left perch (0.36 to 1.0)
         const t = (this.swingProgress - 0.36) / 0.64;
 
         // Rebound bounce upon smashing the target
@@ -1089,7 +1088,7 @@ export class MoleScene {
       }
 
     } else {
-      // Idle state: smooth breathing & organic hovering
+      // Idle state: smooth breathing & organic hovering at default position
       this.hammerCurrentPos.lerp(this.hammerTargetPos, dt * 7);
       const now = performance.now() * 0.0025;
       const bob = Math.sin(now) * 0.08;
